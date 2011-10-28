@@ -1,0 +1,59 @@
+// This import applies a global reset to any page that imports this stylesheet.
+@import blueprint/reset
+// To configure blueprint, edit the partials/base.sass file.
+@import partials/base
+// Import all the default blueprint modules so that we can access their mixins.
+@import blueprint
+// Import the non-default scaffolding module.
+@import blueprint/scaffolding
+@import "blueprint/typography"
+
+// To generate css equivalent to the blueprint css but with your
+// configuration applied, uncomment:
+// @include blueprint
+
+// If you are doing a lot of stylesheet concatenation, it is suggested
+// that you scope your blueprint styles, so that you can better control
+// what pages use blueprint when stylesheets are concatenated together.
+body.bp
+  +blueprint-typography(true)
+  +blueprint-utilities
+  +blueprint-debug
+  +blueprint-interaction
+  // Remove the scaffolding when you're ready to start doing visual design.
+  // Or leave it in if you're happy with how blueprint looks out-of-the-box
+form.bp
+  +blueprint-form
+  // You'll probably want to remove the scaffolding once you start styling your site.
+  +blueprint-scaffolding
+
+// Page layout can be done using mixins applied to your semantic classes and IDs:
+body.two-col
+  #container
+    +container
+  #header, #footer
+    +column(24)
+    #info
+      padding: 20px
+      padding-right: 60px
+      margin-right: 40px
+      //font-family: Didact Gothic
+      font-size: 24px 
+      //font-weight: bold
+      color: black
+      +column(8)
+    #logo
+      +column(8,true)
+  #sidebar
+    // One third of the grid columns, rounding down. With 24 cols, this is 8.
+    +column(8)
+  #content
+    // Two thirds of the grid columns, rounding up.
+    // With 24 cols, this is 16.
+    // true means it's the last column in the row
+    +column(16, true)
+  #background
+    background-color: #555
+  no-bullets
+
+
